@@ -17,7 +17,7 @@ class ResumeViewModel {
         self.network = network
     }
     
-    func reloaDate (completion: @escaping () -> Void) {
+    func reloaData (completion: @escaping () -> Void) {
         
         network?.getResume(completion: { [weak self] (resume, _) in
             if let resume = resume {

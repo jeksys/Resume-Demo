@@ -82,20 +82,16 @@ class ExperienceTableViewCell: UITableViewCell {
         companyLogoView.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 15, paddingLeft: 5, paddingBottom: 15, paddingRight: 0, width: 50, height: SizeConstraint.GreaterThanOrEqualTo(50))
         
         var topAnchorRef: NSLayoutYAxisAnchor? = topAnchor
-        var bottomAnchorRef: NSLayoutYAxisAnchor? = nil
-        titleLabel.anchor(top: topAnchorRef, left: companyLogoView.rightAnchor, bottom: bottomAnchorRef, right: rightAnchor, paddingTop: 15, paddingLeft: leftPadding, paddingBottom: 0, paddingRight: rightPadding, width: 0, height: SizeConstraint.GreaterThanOrEqualTo(20))
+        titleLabel.anchor(top: topAnchorRef, left: companyLogoView.rightAnchor, bottom: nil, right: rightAnchor, paddingTop: 15, paddingLeft: leftPadding, paddingBottom: 0, paddingRight: rightPadding, width: 0, height: SizeConstraint.GreaterThanOrEqualTo(20))
         
         topAnchorRef = titleLabel.bottomAnchor
-        bottomAnchorRef = nil
-        companyNameLabel.anchor(top: topAnchorRef, left: companyLogoView.rightAnchor, bottom: bottomAnchorRef, right: rightAnchor, paddingTop: 10, paddingLeft: leftPadding, paddingBottom: 0, paddingRight: rightPadding, width: 0, height: SizeConstraint.GreaterThanOrEqualTo(20))
+        companyNameLabel.anchor(top: topAnchorRef, left: companyLogoView.rightAnchor, bottom: nil, right: rightAnchor, paddingTop: 10, paddingLeft: leftPadding, paddingBottom: 0, paddingRight: rightPadding, width: 0, height: SizeConstraint.GreaterThanOrEqualTo(20))
 
         topAnchorRef = companyNameLabel.bottomAnchor
-        bottomAnchorRef = nil
-        companyLocationLabel.anchor(top: topAnchorRef, left: companyLogoView.rightAnchor, bottom: bottomAnchorRef, right: rightAnchor, paddingTop: 5, paddingLeft: leftPadding, paddingBottom: 10, paddingRight: rightPadding, width: 0, height: SizeConstraint.GreaterThanOrEqualTo(20))
+        companyLocationLabel.anchor(top: topAnchorRef, left: companyLogoView.rightAnchor, bottom: nil, right: rightAnchor, paddingTop: 5, paddingLeft: leftPadding, paddingBottom: 10, paddingRight: rightPadding, width: 0, height: SizeConstraint.GreaterThanOrEqualTo(0))
 
         topAnchorRef = companyLocationLabel.bottomAnchor
-        bottomAnchorRef = bottomAnchor
-        periodLabel.anchor(top: topAnchorRef, left: companyLogoView.rightAnchor, bottom: bottomAnchorRef, right: rightAnchor, paddingTop: 5, paddingLeft: leftPadding, paddingBottom: 10, paddingRight: rightPadding, width: 0, height: SizeConstraint.GreaterThanOrEqualTo(20))
+        periodLabel.anchor(top: topAnchorRef, left: companyLogoView.rightAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 5, paddingLeft: leftPadding, paddingBottom: 10, paddingRight: rightPadding, width: 0, height: SizeConstraint.GreaterThanOrEqualTo(0))
     }
     
     required init?(coder aDecoder: NSCoder) {

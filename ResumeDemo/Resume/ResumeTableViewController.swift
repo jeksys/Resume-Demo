@@ -30,7 +30,9 @@ class ResumeTableViewController: UITableViewController {
         tableView.reloadData()
 
         let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 0)
-        tableView.tableHeaderView = InfoHeaderView(frame: frame, resume: viewModel.resume)
+        let headerView = InfoHeaderView(frame: frame)
+        headerView.resume = viewModel.resume
+        tableView.tableHeaderView = headerView
         
         if let headerView = tableView.tableHeaderView {
             let height = headerView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
@@ -67,7 +69,7 @@ class ResumeTableViewController: UITableViewController {
     func setupModel(){
         let networkManager = NetworkManager()
         viewModel = ResumeViewModel(network: networkManager)
-        viewModel.reloaDate { [weak self] in
+        viewModel.reloaData { [weak self] in
             self?.reloadTableView()
         }
     }

@@ -11,6 +11,8 @@
 		D50BCC3922A33B9300898950 /* UIView_anchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50BCC3822A33B9300898950 /* UIView_anchor.swift */; };
 		D59365CE22A4594E0052B097 /* URLSession_tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59365CD22A4594E0052B097 /* URLSession_tasks.swift */; };
 		D59365D222A46FFF0052B097 /* GlobalSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59365D122A46FFF0052B097 /* GlobalSettings.swift */; };
+		D59365D422A476A40052B097 /* ResumeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59365D322A476A40052B097 /* ResumeTest.swift */; };
+		D59365D822A479040052B097 /* ResumeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59365D722A479040052B097 /* ResumeViewModelTests.swift */; };
 		D5BBC67122A229CD007F0ABE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BBC67022A229CD007F0ABE /* AppDelegate.swift */; };
 		D5BBC67622A229CD007F0ABE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5BBC67422A229CD007F0ABE /* Main.storyboard */; };
 		D5BBC67822A229CE007F0ABE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5BBC67722A229CE007F0ABE /* Assets.xcassets */; };
@@ -42,6 +44,8 @@
 		D59365CD22A4594E0052B097 /* URLSession_tasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSession_tasks.swift; sourceTree = "<group>"; };
 		D59365CF22A45EC40052B097 /* resume demo - description.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "resume demo - description.docx"; sourceTree = "<group>"; };
 		D59365D122A46FFF0052B097 /* GlobalSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalSettings.swift; sourceTree = "<group>"; };
+		D59365D322A476A40052B097 /* ResumeTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeTest.swift; sourceTree = "<group>"; };
+		D59365D722A479040052B097 /* ResumeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeViewModelTests.swift; sourceTree = "<group>"; };
 		D5BBC66D22A229CD007F0ABE /* ResumeDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ResumeDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5BBC67022A229CD007F0ABE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D5BBC67522A229CD007F0ABE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -131,6 +135,8 @@
 			isa = PBXGroup;
 			children = (
 				D5BBC68522A229CE007F0ABE /* ResumeDemoTests.swift */,
+				D59365D322A476A40052B097 /* ResumeTest.swift */,
+				D59365D722A479040052B097 /* ResumeViewModelTests.swift */,
 				D5BBC68722A229CE007F0ABE /* Info.plist */,
 			);
 			path = ResumeDemoTests;
@@ -285,6 +291,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D59365D822A479040052B097 /* ResumeViewModelTests.swift in Sources */,
+				D59365D422A476A40052B097 /* ResumeTest.swift in Sources */,
 				D5BBC68622A229CE007F0ABE /* ResumeDemoTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

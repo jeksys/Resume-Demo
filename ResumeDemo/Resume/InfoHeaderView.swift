@@ -10,14 +10,50 @@ import UIKit
 
 class InfoHeaderView: UIView {
     
-    var profileView: UIImageView!
-    var fullNameLabel: UILabel!
-    var infoText: UILabel!
-    var model: Resume!
-    
-    init(frame: CGRect, resume: Resume) {
+    var resume: Resume?{
+        didSet{
+            profileView.download(from: resume?.photo)
+            fullNameLabel.text = resume?.fullName
+            introLabel.text = resume?.intro
+        }
+    }
+
+    private let profileView : UIImageView = {
+        let imgView = UIImageView(frame: .zero)
+        imgView.contentMode = .scaleAspectFit
+        imgView.clipsToBounds = true
+        
+        imgView.backgroundColor = ResumeColors.gray0
+        imgView.layer.borderColor = ResumeColors.white.cgColor
+        imgView.layer.borderWidth = 1.0
+        imgView.layer.cornerRadius = 5.0
+        imgView.clipsToBounds = true
+
+        return imgView
+    }()
+
+    private let fullNameLabel : UILabel = {
+        let label = UILabel()
+        label.textColor = .black
+        label.font = ResumeFonts.H1
+        label.textAlignment = .left
+        label.numberOfLines = 0
+        label.lineBreakMode = NSLineBreakMode.byWordWrapping
+        return label
+    }()
+
+    private let introLabel : UILabel = {
+        let label = UILabel()
+        label.textColor = .black
+        label.font = ResumeFonts.H3
+        label.textAlignment = .left
+        label.numberOfLines = 0
+        label.lineBreakMode = NSLineBreakMode.byWordWrapping
+        return label
+    }()
+
+    override init(frame: CGRect) {
         super.init(frame: frame)
-        model = resume
         setupView()
     }
     
@@ -26,17 +62,11 @@ class InfoHeaderView: UIView {
     }
     
     private func setupView(){
-        backgroundColor = .lightGray
-        translatesAutoresizingMaskIntoConstraints = true
-        
-        widthAnchor.constraint(equalToConstant: frame.width)
+        backgroundColor = ResumeColors.gray1
+        translatesAutoresizingMaskIntoConstraints = false
+
+        widthAnchor.constraint(equalToConstant: frame.width).isActive = true
         heightAnchor.constraint(greaterThanOrEqualToConstant: 0).isActive = true
-        
-        if let superview = superview {
-            leftAnchor.constraint(equalTo: superview.leftAnchor, constant: 0).isActive=true
-            rightAnchor.constraint(equalTo: superview.rightAnchor, constant: 0).isActive=true
-            topAnchor.constraint(equalTo: topAnchor, constant: 0).isActive=true
-        }
         
         addPhotoView()
         addFullName()
@@ -44,64 +74,40 @@ class InfoHeaderView: UIView {
     }
     
     func addPhotoView(){
-        
-        profileView = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-        profileView.translatesAutoresizingMaskIntoConstraints = false
-        profileView.backgroundColor = ResumeColors.gray0
-        profileView.layer.borderColor = ResumeColors.white.cgColor
-        profileView.layer.borderWidth = 1.0
-        profileView.layer.cornerRadius = 5.0
-        profileView.clipsToBounds = true
         addSubview(profileView)
+        profileView.translatesAutoresizingMaskIntoConstraints = false
         
         profileView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         profileView.widthAnchor.constraint(equalToConstant: 100).isActive = true
         profileView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         profileView.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive=true
         
-        if let photo = model.photo, let url = URL(string: photo){
-            profileView.download(from: url)
-        }
     }
     
     func addFullName(){
-        fullNameLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-        fullNameLabel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(fullNameLabel)
-        
-        fullNameLabel.font = ResumeFonts.H1
-        fullNameLabel.numberOfLines = 1
-        fullNameLabel.textAlignment = .center
+        fullNameLabel.translatesAutoresizingMaskIntoConstraints = false
 
         fullNameLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         fullNameLabel.heightAnchor.constraint(equalToConstant: 25).isActive = true
         fullNameLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: 0).isActive = true
-        fullNameLabel.topAnchor.constraint(equalTo: profileView.bottomAnchor, constant: 10).isActive=true
-        
-        fullNameLabel.text = model.fullName
-        fullNameLabel.sizeToFit()
+        fullNameLabel.topAnchor.constraint(equalTo: profileView.bottomAnchor, constant: 10).isActive = true
+        fullNameLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 20).isActive = true
+        fullNameLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -20).isActive = true
     }
     
     func addInfoText(){
-        infoText = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-        infoText.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(infoText)
+        addSubview(introLabel)
+        introLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        infoText.font = ResumeFonts.H3
-        infoText.numberOfLines = 0
-        infoText.textAlignment = .left
-        infoText.lineBreakMode = NSLineBreakMode.byWordWrapping
+        introLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        introLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 100).isActive = true
+        introLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: 0).isActive = true
+        introLabel.topAnchor.constraint(equalTo: fullNameLabel.bottomAnchor, constant: 10).isActive = true
+        introLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10).isActive = true
+        introLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 20).isActive = true
+        introLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -20).isActive = true
         
-        infoText.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        infoText.heightAnchor.constraint(greaterThanOrEqualToConstant: 100).isActive = true
-        infoText.widthAnchor.constraint(greaterThanOrEqualToConstant: 0).isActive = true
-        infoText.topAnchor.constraint(equalTo: fullNameLabel.bottomAnchor, constant: 10).isActive=true
-        infoText.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10).isActive=true
-        infoText.leftAnchor.constraint(equalTo: leftAnchor, constant: 50).isActive=true
-        infoText.rightAnchor.constraint(equalTo: rightAnchor, constant: -50).isActive=true
-        
-        infoText.text = model.intro
-        infoText.sizeToFit()
     }
     
 }

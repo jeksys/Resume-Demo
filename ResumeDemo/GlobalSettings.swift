@@ -9,7 +9,7 @@
 import Foundation
 
 struct GlobalSettings {
-    static let resumeURL = "https://raw.githubusercontent.com/jeksys/Resume-Demo/master/ResumeDemo/resume.json"
+    static var resumeURL = "https://raw.githubusercontent.com/jeksys/Resume-Demo/master/ResumeDemo/resume.json"
 }
 
 

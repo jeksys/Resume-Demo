@@ -10,10 +10,10 @@ import Foundation
 
 // MARK: - Resume
 struct Resume: Codable {
-    let firstName: String?
-    let lastName: String?
+    var firstName: String?
+    var lastName: String?
     let intro: String?
-    let photo: String?
+    let photo: URL?
     let experience: [Experience]?
 
     init() {
