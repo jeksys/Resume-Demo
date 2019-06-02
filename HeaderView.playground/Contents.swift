@@ -3,9 +3,31 @@
 import UIKit
 import PlaygroundSupport
 
+
+struct ResumeColors {
+    
+    static let white = UIColor.white
+    static let gray0 = UIColor(red: 250.0/255.0, green: 250.0/255.0, blue: 250.0/255.0, alpha: 1.0)
+    static let gray1 = UIColor(red: 230.0/255.0, green: 230.0/255.0, blue: 230.0/255.0, alpha: 1.0)
+    
+}
+
+struct ResumeFonts {
+    
+    static let H1 = UIFont.boldSystemFont(ofSize: 16)
+    static let H2 = UIFont.boldSystemFont(ofSize: 14)
+    static let H3 = UIFont.systemFont(ofSize: 13)
+    
+}
+
 extension UIImageView {
     
-    func download(from url: URL) {
+    func download(from url: URL?) {
+        
+        guard let url = url else {
+            return
+        }
+        
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             guard let data = data, let image = UIImage(data: data) else {
                 return
@@ -22,7 +44,7 @@ struct Resume: Codable {
     let firstName: String?
     let lastName: String?
     let intro: String?
-    let photo: String?
+    let photo: URL?
     
     var fullName: String?{
         get{
@@ -43,14 +65,50 @@ struct Resume: Codable {
 
 class InfoHeaderView: UIView {
     
-    var profileView: UIImageView!
-    var fullNameLabel: UILabel!
-    var infoText: UILabel!
-    var model: Resume!
+    var resume: Resume?{
+        didSet{
+            profileView.download(from: resume?.photo)
+            fullNameLabel.text = resume?.fullName
+            introLabel.text = resume?.intro
+        }
+    }
     
-    init(frame: CGRect, resume: Resume) {
+    private let profileView : UIImageView = {
+        let imgView = UIImageView(frame: .zero)
+        imgView.contentMode = .scaleAspectFit
+        imgView.clipsToBounds = true
+        
+        imgView.backgroundColor = ResumeColors.gray0
+        imgView.layer.borderColor = ResumeColors.white.cgColor
+        imgView.layer.borderWidth = 1.0
+        imgView.layer.cornerRadius = 5.0
+        imgView.clipsToBounds = true
+        
+        return imgView
+    }()
+    
+    private let fullNameLabel : UILabel = {
+        let label = UILabel()
+        label.textColor = .black
+        label.font = ResumeFonts.H1
+        label.textAlignment = .left
+        label.numberOfLines = 0
+        label.lineBreakMode = NSLineBreakMode.byWordWrapping
+        return label
+    }()
+    
+    private let introLabel : UILabel = {
+        let label = UILabel()
+        label.textColor = .black
+        label.font = ResumeFonts.H3
+        label.textAlignment = .left
+        label.numberOfLines = 0
+        label.lineBreakMode = NSLineBreakMode.byWordWrapping
+        return label
+    }()
+    
+    override init(frame: CGRect) {
         super.init(frame: frame)
-        model = resume
         setupView()
     }
     
@@ -59,86 +117,58 @@ class InfoHeaderView: UIView {
     }
     
     private func setupView(){
-        backgroundColor = .lightGray
-        translatesAutoresizingMaskIntoConstraints = true
-        
-        widthAnchor.constraint(equalToConstant: frame.width)
+        backgroundColor = ResumeColors.gray1
+        translatesAutoresizingMaskIntoConstraints = false
+
+        widthAnchor.constraint(equalToConstant: frame.width).isActive = true
         heightAnchor.constraint(greaterThanOrEqualToConstant: 0).isActive = true
-        
-        //        if let superview = superview {
-        //            leftAnchor.constraint(equalTo: superview.leftAnchor, constant: 0).isActive=true
-        //            rightAnchor.constraint(equalTo: superview.rightAnchor, constant: 0).isActive=true
-        //            topAnchor.constraint(equalTo: topAnchor, constant: 0).isActive=true
-        //        }
         
         addPhotoView()
         addFullName()
         addInfoText()
-        
-        
     }
     
     func addPhotoView(){
-        
-        profileView = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-        profileView.translatesAutoresizingMaskIntoConstraints = false
-        profileView.backgroundColor = UIColor.gray
-        profileView.layer.borderColor = UIColor.white.cgColor
-        profileView.layer.borderWidth = 1.0
-        profileView.layer.cornerRadius = 5.0
-        profileView.clipsToBounds = true
         addSubview(profileView)
+        profileView.translatesAutoresizingMaskIntoConstraints = false
         
         profileView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         profileView.widthAnchor.constraint(equalToConstant: 100).isActive = true
         profileView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         profileView.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive=true
         
-        if let photo = model.photo, let url = URL(string: photo){
-            profileView.download(from: url)
-        }
     }
     
     func addFullName(){
-        fullNameLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         addSubview(fullNameLabel)
         fullNameLabel.translatesAutoresizingMaskIntoConstraints = false
-        fullNameLabel.text = model.fullName
         
         fullNameLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         fullNameLabel.heightAnchor.constraint(equalToConstant: 25).isActive = true
         fullNameLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: 0).isActive = true
         fullNameLabel.topAnchor.constraint(equalTo: profileView.bottomAnchor, constant: 10).isActive=true
-        fullNameLabel.sizeToFit()
     }
     
     func addInfoText(){
-        infoText = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-        addSubview(infoText)
-        infoText.translatesAutoresizingMaskIntoConstraints = false
-        infoText.text = model.intro
-        infoText.numberOfLines = 0
-        infoText.textAlignment = .center
-        infoText.lineBreakMode = NSLineBreakMode.byWordWrapping
+        addSubview(introLabel)
+        introLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        infoText.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        infoText.heightAnchor.constraint(greaterThanOrEqualToConstant: 0).isActive = true
-        infoText.widthAnchor.constraint(greaterThanOrEqualToConstant: 0).isActive = true
-        infoText.topAnchor.constraint(equalTo: fullNameLabel.bottomAnchor, constant: 10).isActive=true
-        //        infoText.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 10).isActive=true
+        introLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        introLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 100).isActive = true
+        introLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: 0).isActive = true
+        introLabel.topAnchor.constraint(equalTo: fullNameLabel.bottomAnchor, constant: 10).isActive=true
+        introLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10).isActive=true
+        introLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 20).isActive=true
+        introLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -20).isActive=true
         
-        infoText.leftAnchor.constraint(equalTo: leftAnchor, constant: 50).isActive=true
-        infoText.rightAnchor.constraint(equalTo: rightAnchor, constant: -50).isActive=true
-        
-        infoText.sizeToFit()
     }
     
 }
-
-let resume = Resume(firstName: "Eugene", lastName: "Yagrushkin", intro: "Info", photo: "https://placekitten.com/250/250")
+let resume = Resume(firstName: "Eugene", lastName: "Yagrushkin", intro: "Info", photo: URL(string: "https://placekitten.com/250/250")!)
 
 let frame = CGRect(x: 0, y: 0, width: 375, height: 200)
-let headerView = InfoHeaderView(frame: frame, resume: resume)
+let headerView = InfoHeaderView(frame: frame)
+headerView.resume = resume
 headerView.layoutSubviews()
 
 // Present the view controller in the Live View window
