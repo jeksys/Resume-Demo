@@ -10,6 +10,8 @@ import UIKit
 
 class InfoHeaderView: UIView {
     
+    private var widthConstraint : NSLayoutConstraint?
+
     var resume: Resume?{
         didSet{
             profileView.download(from: resume?.photo)
@@ -34,6 +36,7 @@ class InfoHeaderView: UIView {
 
     private let fullNameLabel : UILabel = {
         let label = UILabel()
+        label.backgroundColor = ResumeColors.gray1
         label.textColor = .black
         label.font = ResumeFonts.H1
         label.textAlignment = .left
@@ -44,6 +47,7 @@ class InfoHeaderView: UIView {
 
     private let introLabel : UILabel = {
         let label = UILabel()
+        label.backgroundColor = ResumeColors.gray1
         label.textColor = .black
         label.font = ResumeFonts.H3
         label.textAlignment = .left
@@ -61,11 +65,17 @@ class InfoHeaderView: UIView {
         super.init(coder: aDecoder)
     }
     
+    func update(width: CGFloat) {
+        widthConstraint?.isActive = false
+        widthConstraint = widthAnchor.constraint(equalToConstant: width)
+        widthConstraint?.isActive = true
+    }
+    
     private func setupView(){
         backgroundColor = ResumeColors.gray1
         translatesAutoresizingMaskIntoConstraints = false
 
-        widthAnchor.constraint(equalToConstant: frame.width).isActive = true
+        update(width: frame.width)
         heightAnchor.constraint(greaterThanOrEqualToConstant: 0).isActive = true
         
         addPhotoView()

@@ -30,6 +30,7 @@ class ExperienceTableViewCell: UITableViewCell {
     
     private let titleLabel : UILabel = {
         let label = UILabel()
+        label.backgroundColor = ResumeColors.gray0
         label.textColor = .black
         label.font = ResumeFonts.H1
         label.textAlignment = .left
@@ -40,6 +41,7 @@ class ExperienceTableViewCell: UITableViewCell {
 
     private let companyNameLabel : UILabel = {
         let label = UILabel()
+        label.backgroundColor = ResumeColors.gray0
         label.textColor = .black
         label.font = ResumeFonts.H2
         label.textAlignment = .left
@@ -49,6 +51,7 @@ class ExperienceTableViewCell: UITableViewCell {
 
     private let companyLocationLabel : UILabel = {
         let label = UILabel()
+        label.backgroundColor = ResumeColors.gray0
         label.textColor = .black
         label.font = ResumeFonts.H3
         label.textAlignment = .left
@@ -58,6 +61,7 @@ class ExperienceTableViewCell: UITableViewCell {
 
     private let periodLabel : UILabel = {
         let label = UILabel()
+        label.backgroundColor = ResumeColors.gray0
         label.textColor = .black
         label.font = ResumeFonts.H3
         label.textAlignment = .left

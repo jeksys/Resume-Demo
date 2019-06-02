@@ -53,6 +53,7 @@ class ResumeTableViewController: UITableViewController {
         
         // Dynamic sizing for the header view
         if let headerView = tableView.tableHeaderView {
+            (headerView as? InfoHeaderView)?.update(width: tableView.frame.width)
             let height = headerView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
             var headerFrame = headerView.frame
             
