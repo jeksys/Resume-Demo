@@ -28,8 +28,8 @@ class ResumeTableViewController: UITableViewController {
     
     func reloadTableView(){
         tableView.reloadData()
-        let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 100)
 
+        let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 0)
         tableView.tableHeaderView = InfoHeaderView(frame: frame, resume: viewModel.resume)
         
         if let headerView = tableView.tableHeaderView {
@@ -72,11 +72,6 @@ class ResumeTableViewController: UITableViewController {
         }
     }
     
-    // MARK: - Table view data source
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.resume.experience?.count ?? 0
     }

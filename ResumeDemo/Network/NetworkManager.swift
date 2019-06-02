@@ -16,7 +16,7 @@ class NetworkManager: NetworkResumeProtocol {
 
     func getResume(completion: @escaping (Resume?, Error?) -> Void) {
 
-        let urlString = "https://raw.githubusercontent.com/jeksys/jeksys.github.io/master/resume.json"
+        let urlString = GlobalSettings.resumeURL
         guard let url = URL(string: urlString) else {
             completion(nil, nil)
             return

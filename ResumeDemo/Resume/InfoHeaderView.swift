@@ -100,7 +100,7 @@ class InfoHeaderView: UIView {
         infoText.leftAnchor.constraint(equalTo: leftAnchor, constant: 50).isActive=true
         infoText.rightAnchor.constraint(equalTo: rightAnchor, constant: -50).isActive=true
         
-        infoText.text = " infoText.centerXAnchor. constraint(equalTo: centerXAnchor).isActive = true infoText.centerXAnchor. constraint(equalTo: centerXAnchor).isActive = true infoText.centerXAnchor. constraint(equalTo: centerXAnchor).isActive = true"//model.intro
+        infoText.text = model.intro
         infoText.sizeToFit()
     }
     

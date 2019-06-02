@@ -10,6 +10,7 @@
 		D50BCC3722A3338900898950 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50BCC3622A3338900898950 /* Styles.swift */; };
 		D50BCC3922A33B9300898950 /* UIView_anchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50BCC3822A33B9300898950 /* UIView_anchor.swift */; };
 		D59365CE22A4594E0052B097 /* URLSession_tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59365CD22A4594E0052B097 /* URLSession_tasks.swift */; };
+		D59365D222A46FFF0052B097 /* GlobalSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59365D122A46FFF0052B097 /* GlobalSettings.swift */; };
 		D5BBC67122A229CD007F0ABE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BBC67022A229CD007F0ABE /* AppDelegate.swift */; };
 		D5BBC67622A229CD007F0ABE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5BBC67422A229CD007F0ABE /* Main.storyboard */; };
 		D5BBC67822A229CE007F0ABE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5BBC67722A229CE007F0ABE /* Assets.xcassets */; };
@@ -40,6 +41,7 @@
 		D50BCC3822A33B9300898950 /* UIView_anchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView_anchor.swift; sourceTree = "<group>"; };
 		D59365CD22A4594E0052B097 /* URLSession_tasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSession_tasks.swift; sourceTree = "<group>"; };
 		D59365CF22A45EC40052B097 /* resume demo - description.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "resume demo - description.docx"; sourceTree = "<group>"; };
+		D59365D122A46FFF0052B097 /* GlobalSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalSettings.swift; sourceTree = "<group>"; };
 		D5BBC66D22A229CD007F0ABE /* ResumeDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ResumeDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5BBC67022A229CD007F0ABE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D5BBC67522A229CD007F0ABE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 			children = (
 				D5BBC67022A229CD007F0ABE /* AppDelegate.swift */,
 				D50BCC3622A3338900898950 /* Styles.swift */,
+				D59365D122A46FFF0052B097 /* GlobalSettings.swift */,
 				D59365D022A461300052B097 /* Extensions */,
 				D5BBC69E22A235A5007F0ABE /* Resume */,
 				D5BBC69222A229F4007F0ABE /* Network */,
@@ -268,6 +271,7 @@
 				D5BBC6A422A25102007F0ABE /* UIImageViewDownload.swift in Sources */,
 				D5BBC69122A229E8007F0ABE /* NetworkManager.swift in Sources */,
 				D50BCC3922A33B9300898950 /* UIView_anchor.swift in Sources */,
+				D59365D222A46FFF0052B097 /* GlobalSettings.swift in Sources */,
 				D5BBC69B22A2310C007F0ABE /* ResumeTableViewController.swift in Sources */,
 				D5BBC69D22A2331B007F0ABE /* ResumeViewModel.swift in Sources */,
 				D5BBC6A222A235D6007F0ABE /* InfoHeaderView.swift in Sources */,
