@@ -1,0 +1,24 @@
+{
+    "firstName": "Eugene",
+    "lastName": "Yagrushkin",
+    "intro": "Skilled iOS and MacOS developer with startup experience, published 10+ native iOS app in the App Store.",
+    "photo": "https://placekitten.com/250/250",
+    "experience": [
+        {
+            "title": "Senior Software Developer (iOS)",
+            "companyName": "Ritchie Bros.",
+            "logo": "https://placekitten.com/50/50",
+            "startDate": "01/11/2017",
+            "location": "Vancouver, BC"
+        },
+        {
+            "title": "Senior iOS Developer",
+            "companyName": "Casting Workbook",
+            "logo": "https://placekitten.com/50/50",
+            "startDate": "01/10/2016",
+            "endDate": "01/11/2017",
+            "location": "Vancouver, BC"
+        }
+        
+    ]
+}
